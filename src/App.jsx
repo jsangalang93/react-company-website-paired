@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css';
 import StaffListItem from './components/StaffDirectory/StaffDirectory.jsx';
-import navPageItems from './components/nav/nav.jsx';
+import Nav from './components/Nav/Nav.jsx';
 
 const App = () => {
 
