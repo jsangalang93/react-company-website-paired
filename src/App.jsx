@@ -1,10 +1,13 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import StaffListItem from './components/StaffDirectory.jsx';
+import './App.css';
+import StaffListItem from './components/StaffDirectory/StaffDirectory.jsx';
+import navPageItems from './components/nav/nav.jsx';
 
+const App = () => {
 
+const [Nav, setNav] = useState();
+const [staff, setStaff] = useState();
+const [navPageItems ] = [];
 
 const StaffList = [
 {
@@ -19,17 +22,27 @@ const StaffList = [
   title: 'Junior Dev',
   yearStarted: '1993',
 },
+];
 
-StaffListHandler () => {
-  
+const StaffListHandler = (staff, index) => {
+  setStaff(staff);
+
 }
-
-]
-function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
+    <div className="Nav">
+    <ul>
+    {navPageItems.map((navPage, index) => (
+      <navPageItems
+      key={index}
+      navPageItems={navPageItems}
+      />
+    ))}
+
+    </ul>
+    </div>
+
     <h1>Company Page</h1>
     {StaffList.map((staff, index) => (
       <StaffListItem
@@ -41,4 +54,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
