@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import './App.css';
 import StaffListItem from './components/StaffDirectory/StaffDirectory.jsx';
-import Nav from './components/Nav/Nav.jsx';
+import NavItems from './components/nav/nav.jsx';
+
 
 const App = () => {
 
-const [Nav, setNav] = useState();
-const [staff, setStaff] = useState();
-const [navPageItems ] = [];
+const [navItems, setNavItems] = useState([]);
+const [staff, setStaff] = useState([]);
+const [currentSection, setCurrentSection] = useState('Company Page');
 
 const StaffList = [
 {
@@ -29,18 +30,20 @@ const StaffListHandler = (staff, index) => {
 
 }
 
+
+
   return (
     <>
     <div className="Nav">
-    <ul>
-    {navPageItems.map((navPage, index) => (
-      <navPageItems
-      key={index}
-      navPageItems={navPageItems}
-      />
-    ))}
+      <ul>
+        {navItems.map((navItem) => (
+        <navItems 
+        key={navItem.index}
+        navItem={navItem}
+        navItems={navItems}/>
+      ))}
 
-    </ul>
+      </ul>
     </div>
 
     <h1>Company Page</h1>
