@@ -1,12 +1,18 @@
-const StaffListItem = ({staff}) => {
+
+
+const StaffListItem = (props) => {
+const {staff} = props;
     return (
+        <>
+        <div className='staff'>
         <li>
-            <div className='staff'>
+            
                 <p>Name: {staff.firstName} {staff.lastName}</p>
                 <p>Title: {staff.title}</p>
                 <p>Started: {staff.yearStarted}</p>
-            </div>
         </li>
+        </div>
+        </>
     )
 }
 

@@ -2,59 +2,81 @@ import { useState } from 'react'
 import './App.css';
 import StaffListItem from './components/StaffDirectory/StaffDirectory.jsx';
 import NavItems from './components/nav/nav.jsx';
-
+import CoPage from './components/CompanyHistory/CompanyHistory.jsx';
 
 const App = () => {
-
-const [navItems, setNavItems] = useState([]);
-const [staff, setStaff] = useState([]);
+const [showStaff, setShowStaff] = useState(false);
+const [ShowCompanyHistory, setShowCompanyHistory] = useState(false);
+const [page, setPage] = useState('Company Page');
+const [staff, setStaff] = useState('Company Page');
 const [currentSection, setCurrentSection] = useState('Company Page');
 
-const StaffList = [
-{
+
+
+const handleClickShowStaff = (staff) => {
+  setShowStaff(!showStaff);
+}
+
+const handleClickShowCompanyHistory = () => {
+  setShowCompanyHistory(!ShowCompanyHistory);
+}
+
+const [StaffList, setStaffList] = useState([
+  {
   firstName: 'Jordan',
   lastName: 'Sangalang',
   title: 'Junior Dev',
   yearStarted: '1986',
-},
-{
+  },
+  {
   firstName: 'Rayshawn',
   lastName: 'Jones',
   title: 'Junior Dev',
   yearStarted: '1993',
-},
-];
-
-const StaffListHandler = (staff, index) => {
-  setStaff(staff);
-
-}
-
-
-
+  }
+  ]
+);
+const [sectionToShow, setSectionToShow] = useState('Company Page');
   return (
     <>
     <div className="Nav">
       <ul>
-        {navItems.map((navItem) => (
-        <navItems 
-        key={navItem.index}
-        navItem={navItem}
-        navItems={navItems}/>
-      ))}
+        <NavItems
+        handleClickShowStaff= {handleClickShowStaff}
+        handleClickShowCompanyHistory= {handleClickShowCompanyHistory}
+        />
 
       </ul>
     </div>
 
-    <h1>Company Page</h1>
-    {StaffList.map((staff, index) => (
-      <StaffListItem
-      key={index}
+    {/* {ShowCompanyHistory ? 
+    CoPage.map((companyHistory) => (
+      <CoPage
+      key={companyHistory}
+      companyHistory={companyHistory}
+      />
+    )
+  )
+  : null} */}
+
+
+{ShowCompanyHistory ? 
+      <CoPage/>: null}
+
+
+    {showStaff ? 
+    StaffList.map((staff) => (
+      <StaffListItem 
+      key={staff.firstName}
       staff={staff}
       />
-    ))}
+    )
+  )
+  : null}
+
     </>
-  );
+)
 }
+
 
 export default App;
